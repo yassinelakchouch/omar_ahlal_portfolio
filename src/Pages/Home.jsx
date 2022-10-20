@@ -12,7 +12,10 @@ const Home = () => {
             "/omar_images/pics/best3.jpg"
     ];
     const imgAction = (action)=>{
-        
+        let i = data.i;
+        if(action === "next"){
+            setData({img:photos[i+1],i:i+1})
+        }
     }
     const viewImage = (img,i)=>{
         setData({img,i});
@@ -24,12 +27,14 @@ const Home = () => {
             <div
             className='w-screen h-screen bg-black fixed top-0 flex justify-center items-center'>
                 <TiDelete 
-                className='absolute top-3 right-6 cursor-pointer text-white w-6 h-6 md:w-11 md:h-11'
-                onClick={()=>{}}
+                className='absolute top-1 right-7 md:top-3 md:right-6 cursor-pointer text-white w-8 h-8 md:w-11 md:h-11'
                 />
-                <GrCaretNext className='cursor-pointer text-white w-6 h-6 md:w-11 md:h-11'/>
-                <GrCaretPrevious className='cursor-pointer text-white w-6 h-6 md:w-11 md:h-11'/>
+               <GrCaretPrevious className='aboslute top-10 right-10 cursor-pointer  bg-white rounded-full p-1 w-8 h-8  md:w-11 md:h-11'/>
                <img src={data.img}  className='w-auto max-w-full max-h-full '/>
+                <GrCaretNext className='aboslute top-10 right-10 cursor-pointer bg-white p-1 rounded-full text-grey w-8 h-8  md:w-11 md:h-11'
+                onClick={()=>imgAction("next")}
+                />
+
             </div>
         }
         <div className='mx-auto text-white font-crimson'>
