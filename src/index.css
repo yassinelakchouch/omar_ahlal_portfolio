@@ -9,9 +9,61 @@
 .active{
 @apply text-darkblue;
 }
-.inactive{
-    @apply text-white;
+
+
+    
+
+
+/* .waves {
+    height: 80px;
+    background: linear-gradient(to bottom left, pink, #e72);
+} */
+h1 {
+    margin: 2rem 2rem 0;
+    font-size: 1.62rem;
 }
+.form {
+    padding: 2rem;
+}
+
+.text-input {
+    @apply relative mb-3.5 w-full;
+}
+
+.text-input input {
+    @apply block w-full border-b-2 border-white text-white outline-none font-semibold text-lg md:text-2xl bg-transparent;
+    padding: 1ch;
+    border-radius: 3px;
+    outline: none;
+}
+.text-input input.input-focus {
+    @apply border-b border-darkblue bg-white bg-opacity-30;
+}
+
+.text-area {
+    @apply  relative w-full;
+    margin-bottom: 1rem;
+}
+
+.text-area textarea {
+    @apply block w-full border-b-2 border-white text-white  outline-none font-semibold text-lg md:text-2xl bg-transparent ;
+    padding: 1ch;
+    border-radius: 3px;
+    height: 8em;
+}
+
+.text-area textarea.input-focus {
+    @apply border-b border-darkblue bg-white bg-opacity-30;
+}
+
+.button {
+    @apply block text-xl md:text-3xl md:py-4 md:px-20 py-2 px-10 text-center hover:bg-white hover:bg-opacity-30 bg-transparent border border-x-cyan-50 text-white;
+} 
+
+  button:disabled,button[disabled]{
+   @apply bg-gray-400 border text-gray-700;
+  }
+
 
 @tailwind base;
 @tailwind components;
