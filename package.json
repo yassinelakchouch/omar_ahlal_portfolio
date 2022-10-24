@@ -1,4 +1,4 @@
-{
+{  
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
@@ -29,6 +29,7 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+
     "extends": [
       "react-app",
       "react-app/jest"

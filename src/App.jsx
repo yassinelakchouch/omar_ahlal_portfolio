@@ -10,14 +10,16 @@ function App() {
 
   return (<>     
 
-    <Router>
+    <Router >
         <NavBar />
-        <Routes>
-          <Route  exact path='/home' element={<Home />} />
-          <Route  exact path="/work" element={<Work />} />
-          <Route  exact  path="/contact" element={<Contact />} />
-          <Route  path="*" element={<Error />} />
-        </Routes>
+<Routes>
+          <Route exact index path="/home" element={<Home />} />
+  
+          <Route   exact index path="/work" element={<Work />} />
+  
+          <Route   exact index path="/contact" element={<Contact />} />
+           <Route  path="*" element={<Error />} />
+          </Routes>
         <Footer />
         
       

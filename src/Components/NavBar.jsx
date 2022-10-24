@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import {   NavLink, useNavigate } from 'react-router-dom'
 export const NavBar = () => {
+
   const navigation = useNavigate();
     const links = [
         {
@@ -29,7 +30,7 @@ export const NavBar = () => {
              {
                 links.map(({id,name,link})=>
                     <li key={id} className="font-crimson font-medium hover:scale-105 hover:brightness-200 hover:text-darkblue duration-200 cursor-pointer">
-                      <NavLink to={link}>{name}</NavLink>
+                      <NavLink exact={true} to={link} >{name}</NavLink>
                     </li>
                 )
              }
