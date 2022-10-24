@@ -23,7 +23,6 @@ import { SendEmail } from '../helper'
     const [fullNameError, setFullNameError] = useState(true);
     const [emailError, setEmailError] = useState(true);
     const [messageError, setMessageError] = useState(true);
-    const [send, setSend] = useState();
     const [loading,setLoading] = useState(false)
     /* Click/Change Functions */
     const handleChange = (e) => {
@@ -66,6 +65,9 @@ const handleSubmit = async (e)=>{
       () => {
         setLoading(false); 
         toast("Your Message was sent successfully ",{type:'success'})
+        setFullName({...fullName,value:"",focus: false})
+        setEmail({...email,value:"",focus: false})           
+        setMessage({...message,value:"",focus: false})
       }
     ).catch((err) => {
       toast(err,{type:'error'})
@@ -89,7 +91,7 @@ useEffect(()=>{
   validateFullName({ fullName, setFullNameError });
   validateEmail({ email, setEmailError });
   validateMessage({ message, setMessageError });
-},[fullName, email, message,send])
+},[fullName, email, message,setEmail,setFullName,setMessage])
 
 
 const otherProps = {onFocus:handleFocus.bind(),onBlur:handleBlur.bind(),onChange:handleChange.bind()}   

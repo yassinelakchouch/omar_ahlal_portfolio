@@ -42,6 +42,8 @@ const ImageGallery = ({photos}) => {
 
                 </div>
             }
+            {
+                photos&&
              <ResponsiveMasonry className='max-w-5xl px-2 mx-auto'
                             columnsCountBreakPoints={{ 350: 1, 550: 2, 900: 3 }}
                         >
@@ -58,6 +60,8 @@ const ImageGallery = ({photos}) => {
                                 ))}
                             </Masonry>
                         </ResponsiveMasonry>
+}
+
             </>
   )
 }
