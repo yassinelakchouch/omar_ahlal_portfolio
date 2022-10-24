@@ -27,23 +27,23 @@ const ImageGallery = ({photos}) => {
             {
                 data.img &&
                 <div
-                    className='w-full h-screen bg-black z-50 fixed top-0 flex justify-center items-center'>
+                    className='w-full h-screen bg-black z-50 fixed top-0  flex justify-center items-center'>
                     <TiDelete
-                        className='absolute top-1 right-7 md:top-3 md:right-6 cursor-pointer text-white w-8 h-8 md:w-11 md:h-11'
+                        className='absolute md:top-3  my-5 md:right-6 im:top-4/5 mx-auto bottom-0  cursor-pointer text-white w-16 h-16 md:w-11 md:h-11'
                         onClick={() => imgAction()}
                     />
                     <GrPrevious className='aboslute top-10 right-10 cursor-pointer  bg-white rounded-full p-1 w-8 h-8  md:w-11 md:h-11'
                         onClick={() => imgAction("previous")}
                     />
-                    <img src={data.img} className='w-auto max-w-full max-h-full' />
+                    <img src={data.img} className='w-4/5 md:w-auto h-auto p-4 my-2 md:h-full' />
                     <GrNext className='aboslute top-10 right-10 cursor-pointer bg-white p-1 rounded-full text-grey w-8 h-8  md:w-11 md:h-11'
                         onClick={() => imgAction("next")}
                     />
 
                 </div>
             }
-             <ResponsiveMasonry className='max-w-5xl mx-auto'
-                            columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
+             <ResponsiveMasonry className='max-w-5xl px-2 mx-auto'
+                            columnsCountBreakPoints={{ 350: 1, 550: 2, 900: 3 }}
                         >
                             <Masonry columnsCount={3} gutter="20px">
                                 {photos.map((img, i) => (
@@ -51,8 +51,9 @@ const ImageGallery = ({photos}) => {
                                     <img
                                         key={i}
                                         src={img}
-                                        style={{ width: "100%", display: "block", cursor: "pointer", }}
                                         onClick={() => {viewImage(img, i);}}
+                                        data-aos="fade-up" data-aos-delay="500"
+                                        className='block w-4/5 md:w-full cursor-pointer mx-auto'
                                     />
                                 ))}
                             </Masonry>

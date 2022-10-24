@@ -4,12 +4,6 @@ export default class TextInput extends Component {
     const {focus,name,type,label,value,onChange,onInput,onFocus,onBlur,id , ...left} = this.props;
     return (
         <div className="text-input">
-        <label
-            className={(
-                this.props.focus || this.props.value !== '')
-                ? 'label-focus'
-                : ''}
-            htmlFor={this.props.name}>{this.props.label}</label>
         <input
         placeholder={label}
             className={(

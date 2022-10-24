@@ -6,10 +6,10 @@ import Contact from './Pages/Contact';
 import Error from "./Pages/Error";
 import Home from './Pages/Home';
 import Work from './Pages/Work';
-
 function App() {
 
-  return (
+  return (<>     
+
     <Router>
         <NavBar />
         <Routes>
@@ -19,8 +19,11 @@ function App() {
           <Route  path="*" element={<Error />} />
         </Routes>
         <Footer />
-    </Router>
+        
+      
 
+    </Router>
+ </>
   );
 }
 

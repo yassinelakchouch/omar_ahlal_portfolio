@@ -37,7 +37,7 @@ h1 {
     outline: none;
 }
 .text-input input.input-focus {
-    @apply border-b border-darkblue bg-white bg-opacity-30;
+    @apply border-b-2 border-darkblue bg-white bg-opacity-30;
 }
 
 .text-area {
@@ -53,7 +53,7 @@ h1 {
 }
 
 .text-area textarea.input-focus {
-    @apply border-b border-darkblue bg-white bg-opacity-30;
+    @apply border-b-2 border-darkblue bg-white bg-opacity-30;
 }
 
 .button {
@@ -63,6 +63,9 @@ h1 {
   button:disabled,button[disabled]{
    @apply bg-gray-400 border text-gray-700;
   }
+button[disabled]:hover{
+    @apply hover:bg-gray-400 border text-gray-700
+}
 
 
 @tailwind base;

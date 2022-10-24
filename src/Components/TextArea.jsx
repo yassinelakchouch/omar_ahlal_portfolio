@@ -4,12 +4,6 @@ export default class TextArea extends Component {
     render() {
         return (
             <div className="text-area">
-                <label
-                    className={(
-                        this.props.focus || this.props.value !== '')
-                        ? 'label-focus'
-                        : ''}
-                    htmlFor={this.props.name}>{this.props.label}</label>
                 <textarea
                 placeholder={this.props.label}
                     className={(

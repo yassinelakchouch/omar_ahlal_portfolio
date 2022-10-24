@@ -6,6 +6,11 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      screens:{
+        xm:{'min':'251px','max':'400px'},
+        im:{'max':'642px'}
+      }
+      ,
       colors:{
         darkblue: '#243b98',
         blue:'#28527A',
