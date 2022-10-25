@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import { TiDelete } from 'react-icons/ti';
+import {FiImage} from 'react-icons/fi'
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
 const ImageGallery = ({photos}) => {
@@ -43,7 +44,15 @@ const ImageGallery = ({photos}) => {
                 </div>
             }
             {
-                photos&&
+              photos.length===0&&
+                <>              
+                <div className='mt-10 max-w-5xl mx-auto font-crimson text-white flex flex-col items-center gap-5'>
+                <FiImage className='w-10 h-10 md:w-20 md:h-20' />
+                </div>
+                </>
+
+            }
+
              <ResponsiveMasonry className='max-w-5xl px-2 mx-auto'
                             columnsCountBreakPoints={{ 350: 1, 550: 2, 900: 3 }}
                         >
@@ -60,7 +69,7 @@ const ImageGallery = ({photos}) => {
                                 ))}
                             </Masonry>
                         </ResponsiveMasonry>
-}
+
 
             </>
   )
