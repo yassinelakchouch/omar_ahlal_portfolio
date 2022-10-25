@@ -5,15 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import {AnimationOnScroll} from 'react-animation-on-scroll'
 const Feature = ({text,icon,id1,id2}) => {
   const navigation = useNavigate()
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "./Bubble.js";
-    script.async = true;
-    document
-        .body
-        .appendChild(script);
-    
-}, [])
+
   return (
     <div  id={id1} className=' feature my-8 py-5 mx-auto bg-white bg-opacity-10 border-y gap-10 border-cyan-50 flex flex-col justify-center items-center  text-xl md:text-3xl text-white font-crimson font-extralight overflow-hidden' >
     <p className='flex'>

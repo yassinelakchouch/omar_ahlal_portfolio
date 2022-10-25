@@ -12,10 +12,7 @@
     
 
 
-/* .waves {
-    height: 80px;
-    background: linear-gradient(to bottom left, pink, #e72);
-} */
+
 h1 {
     margin: 2rem 2rem 0;
     font-size: 1.62rem;
@@ -68,6 +65,10 @@ button[disabled]:hover{
 .active{
     @apply text-darkblue;
     }
+
+ .inactive{
+    @apply text-white;
+ }   
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
