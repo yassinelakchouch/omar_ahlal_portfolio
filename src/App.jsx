@@ -7,7 +7,9 @@ import Contact from './Pages/Contact';
 import Error from "./Pages/Error";
 import Home from './Pages/Home';
 import Work from './Pages/Work';
+
 function App() {
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "./Bubble.js";

@@ -1,17 +1,81 @@
+import { database, storage } from "../firebase";
+import {  onValue, ref } from "firebase/database";
 import { useNavigate } from 'react-router-dom'
 import Feature from '../Components/Feature'
 import Hero from '../Components/Hero'
 import ImageGallery from '../Components/ImageGallery'
 import {AnimationOnScroll} from 'react-animation-on-scroll'
+import { useCallback, useEffect, useState } from 'react'
+import { toast } from "react-toastify";
 
 const Home = () => {
+
      const navigation = useNavigate()
-    const photos = [
-        "/omar_images/pics/best1.jpg",
-        "/omar_images/pics/best2.jpg",
-        "/omar_images/pics/best3.jpg"
-    ];
+     const [photos, setPhotos] = useState([]);
+     const [count,setCount] = useState(0)
+         /* To get the liste of all images */
+    const handleFetch = async () => {
+        let temp = []
+        const bestPics = []
+        const storageRef = storage.ref(`images/`)
+        const res = await storageRef.listAll().then(function (result) {
+          let path = storageRef.fullPath
+          path = path.replace(/\b\/\b(?!.*?\b\/\b)/, "%2F");
+          path = "https://firebasestorage.googleapis.com/v0/b/omar-dashboard.appspot.com/o/" + path;
+          result.items.forEach(async (fileRef) => {
+            temp.push({
+              name: fileRef.name,
+              url: path + "%2F" + fileRef.name + "?alt=media"
+            })
+          });
+        })
+        .then(() => {
+
+          const photoRef = ref(database, "/photos/");
+          onValue(photoRef, (snapshot) => {
+            // console.log(snapshot)
+            const data = snapshot.val();
+            //updateStarCount(postElement, data);
     
+            if (snapshot.exists()) {
+              let _StarredPhotos = []
+              let _NoStarredPhotos = []
+              temp.map((e)=>{
+                const nameToUse = encodeURIComponent(e?.name).replace('.', "%2E")
+                const isStarred = (data?.[nameToUse])?true:false;
+                if(data?.[nameToUse]) _StarredPhotos.push({...e,star:isStarred})
+                else _NoStarredPhotos.push({...e,star:isStarred})
+              })
+              temp = [..._StarredPhotos,..._NoStarredPhotos]
+            }
+    
+          });
+           temp.map((item)=>{
+            if(item.star){
+            bestPics.push(item.url)
+            }
+          })
+        
+          // set data in your any state variable for later use
+          setCount(bestPics.length)
+          setPhotos(bestPics)
+        })
+        .catch(error => {
+          console.log(error);
+          toast("Something went wrong while refreshing",{type:'error'})
+        })
+    }
+
+    const handleGetData = useCallback(async () => {
+        await handleFetch()
+      }, []);
+  
+      useEffect(() => {
+        async function fetchData() {
+          await handleGetData()
+        }
+        fetchData();
+      }, [handleGetData,setPhotos,photos]);
     return (
         <>
             <div className='mx-auto text-white font-crimson'>
@@ -31,7 +95,7 @@ const Home = () => {
                 <Feature  data-aos="zoom-in-down" data-aos-delay="500" text={"Take your business to the next level"} icon={1} id1={"feature1"} id2={"circle1"}/>
                 <div id="feature2" className=' mx-auto ' >
                     <div className='max-w-5xl mx-auto'>
-                    <h2 data-aos="zoom-in-down" data-aos-delay="500" className=' mx-4 text-center md:text-left font-semibold text-2xl md:text-4xl' >Top 3 Photos I've take it</h2>
+                    <h2 data-aos="zoom-in-down" data-aos-delay="500" className=' mx-4 text-center md:text-left font-semibold text-2xl md:text-4xl' >Top {count} Photos I've take it</h2>
                     </div>
                     <div className='mt-8'>
                        <ImageGallery photos={photos} />
