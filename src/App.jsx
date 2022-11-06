@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from './Components/Footer';
 import { NavBar } from './Components/NavBar';
@@ -10,14 +9,7 @@ import Work from './Pages/Work';
 
 function App() {
 
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "./Bubble.js";
-    script.async = true;
-    document
-        .body
-        .appendChild(script);
-}, [])
+
   return (  
 
     <Router >

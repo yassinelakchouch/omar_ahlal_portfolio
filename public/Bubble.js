@@ -5,7 +5,7 @@ bubbleAnimation("#feature3","#circle3")
 function bubbleAnimation(id1 ,id2){
 // eslint-disable-next-line no-undef
 $(id1).mousemove(function(e) {
-  parallaxIt(e, id2, -20,id1);
+  parallaxIt(e, id2, -35,id1);
 });
 
 }

@@ -9,7 +9,14 @@ import { useCallback, useEffect, useState } from 'react'
 import { toast } from "react-toastify";
 
 const Home = () => {
-
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "./Bubble.js";
+    script.async = true;
+    document
+        .body
+        .appendChild(script);
+}, [])
      const navigation = useNavigate()
      const [photos, setPhotos] = useState([]);
      const [count,setCount] = useState(0)
